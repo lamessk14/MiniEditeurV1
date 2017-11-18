@@ -1,7 +1,7 @@
 package command;
 
 import java.util.*;
-import invoker.MonIHM;
+import invoker.MyIHM;
 import receiver.MoteurEditeurImplem;
 
 /**
@@ -11,17 +11,17 @@ public class Selectionner implements Command {
 
 	//Déclaration des variables
 	private MoteurEditeurImplem moteur;
-	private MonIHM ihm;
+	private MyIHM ihm;
 
 	//Constructeur
-	public Selectionner(MoteurEditeurImplem moteur1, MonIHM ihm1) {
+	public Selectionner(MoteurEditeurImplem moteur1, MyIHM ihm1) {
 		this.moteur = moteur1;
 		this.ihm = ihm1;
 	}
 
 	@Override
 	public void execute() {
-		//moteur.selectionner(ihm.getDebutSelection(), ihm.getFinSelection());
+		moteur.selectionner(ihm.getDebutSelection(), ihm.getFinSelection());
 	}
 
 }
