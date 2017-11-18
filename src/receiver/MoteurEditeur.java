@@ -32,4 +32,6 @@ public interface MoteurEditeur {
      * 
      */
     public void insererTxt(char t);
+    
+    public void supprimer();
 }

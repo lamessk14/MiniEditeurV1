@@ -89,6 +89,17 @@ public class MoteurEditeurImplem extends Subject implements MoteurEditeur {
 		notifyObservers();
 	}
 	
+	public void supprimer() {
+		if(sel.getLongueurSelection() > 0){
+			buffer.delete(sel.getDebutSelection(), sel.getFinSelection());
+			selectionner(sel.getDebutSelection(), sel.getDebutSelection());
+		} else if(sel.getDebutSelection() > 0){
+			buffer.delete(sel.getDebutSelection()-1, sel.getDebutSelection());
+			selectionner(sel.getDebutSelection()-1,sel.getDebutSelection()-1);
+		}
+		notifyObservers();
+	}
+	
 	@Override
 	public void notifyObservers() {
 		for(Observer o : getObservers()){

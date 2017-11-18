@@ -10,6 +10,7 @@ import javax.swing.event.CaretListener;
 
 import command.Command;
 
+@SuppressWarnings("serial")
 public class TextArea extends JTextArea {
 
 	private int debutSelection;
@@ -17,6 +18,7 @@ public class TextArea extends JTextArea {
 	private char dernierChar;
 	private Command selectionner;
 	private Command inserer;
+	private Command supprimer;
 
 	public TextArea(HashMap<String, Command> commandes) {
 
@@ -24,6 +26,7 @@ public class TextArea extends JTextArea {
 		finSelection = 0;
 		selectionner = commandes.get("selectionner");
 		inserer = commandes.get("inserer");
+		supprimer = commandes.get("supprimer");
 
 		setRows(20);
 		setColumns(40);
@@ -52,28 +55,17 @@ public class TextArea extends JTextArea {
 				}
 			}
 	
-			/*public void keyPressed(KeyEvent e) {
+			public void keyPressed(KeyEvent e) {
 				if (!e.isActionKey()) {
 					e.consume();
 					if (e.getKeyCode() == KeyEvent.VK_BACK_SPACE) {
-						_supprimer.execute();
+						supprimer.execute();
 					}
 				}
-			}*/
-
-			@Override
-			public void keyPressed(KeyEvent arg0) {
-				// TODO Auto-generated method stub
-
 			}
 
 			@Override
 			public void keyReleased(KeyEvent arg0) {
-				// TODO Auto-generated method stub
-
-			}
-
-			public void keyTyped1(KeyEvent arg0) {
 				// TODO Auto-generated method stub
 
 			}

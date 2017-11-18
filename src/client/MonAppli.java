@@ -28,7 +28,7 @@ public class MonAppli {
 		commandes.put("coller", new Coller(moteur));
 		commandes.put("selectionner", new Selectionner(moteur, ihm));
 		commandes.put("inserer", new InsererTxt(moteur, ihm));
-		//commandes.put("supprimer", new Supprimer(moteur));
+		commandes.put("supprimer", new Supprimer(moteur));
     }
 
     public void start(){
