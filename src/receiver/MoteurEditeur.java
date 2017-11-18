@@ -1,6 +1,8 @@
 package receiver;
 import java.util.*;
 
+import observer.Observer;
+
 /**
  * 
  */
@@ -30,5 +32,4 @@ public interface MoteurEditeur {
      * 
      */
     public void insererTxt(char t);
-
 }

@@ -7,7 +7,7 @@ import observer.Subject;
 /**
  * 
  */
-public class MoteurEditeurImplem implements MoteurEditeur {
+public class MoteurEditeurImplem extends Subject implements MoteurEditeur {
 	
 	private Buffer buffer;
 	private Selection sel;
@@ -20,7 +20,7 @@ public class MoteurEditeurImplem implements MoteurEditeur {
 		buffer = new Buffer();
 		sel = new Selection();
 		pp = new PressePapier();
-		//setObservers(new ArrayList<Observer>());
+		setObservers(new ArrayList<Observer>());
 	}
 	
 	public String getTexte(){
@@ -66,12 +66,12 @@ public class MoteurEditeurImplem implements MoteurEditeur {
 
 	@Override
 	public void coller() {
-		if(_selection.getLongueur() > 0){
-			_buffer.delete(_selection.getDebut(), _selection.getFin());
-			selectionner(_selection.getDebut(),_selection.getDebut());
+		if(sel.getLongueurSelection() > 0){
+			buffer.delete(sel.getDebutSelection(), sel.getFinSelection());
+			selectionner(sel.getDebutSelection(), sel.getDebutSelection());
 		}
-		_buffer.insert(_selection.getDebut(), _pressePapier.getTexte());
-		int select = _selection.getDebut() + _pressePapier.getLongueurTexte();
+		buffer.modifier(sel.getDebutSelection(), pp.getTexte());
+		int select = sel.getDebutSelection() + pp.getLongueurSelection();
 		selectionner(select, select);
 		
 		notifyObservers();
@@ -79,14 +79,31 @@ public class MoteurEditeurImplem implements MoteurEditeur {
 
 	@Override
 	public void insererTxt(char t) {
-		if(_selection.getLongueur() > 0){
-			_buffer.delete(_selection.getDebut(), _selection.getFin());
-			selectionner(_selection.getDebut(),_selection.getDebut());
+		if(sel.getLongueurSelection() > 0){
+			buffer.delete(sel.getDebutSelection(), sel.getFinSelection());
+			selectionner(sel.getDebutSelection(),sel.getDebutSelection());
 		}
-		_buffer.insert(_selection.getDebut(), Character.toString(c));
-		selectionner(_selection.getDebut()+1,_selection.getDebut()+1);
+		buffer.modifier(sel.getDebutSelection(), Character.toString(t));
+		selectionner(sel.getDebutSelection()+1,sel.getDebutSelection()+1);
 
 		notifyObservers();
+	}
+	
+	@Override
+	public void notifyObservers() {
+		for(Observer o : getObservers()){
+			o.notifyMe();
+		}
+	}
+
+	@Override
+	public void registerObserver(Observer o) {
+		getObservers().add(o);
+	}
+
+	@Override
+	public void removeObserver(Observer o) {
+		getObservers().remove(o);
 	}
 
 }
