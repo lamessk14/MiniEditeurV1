@@ -41,7 +41,7 @@ public class MyIHM extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		frame.setContentPane(contentPane);
 		
-		/*JMenuBar menuBarMiniEdit = new JMenuBar();
+		/*  JMenuBar menuBarMiniEdit = new JMenuBar();
 		menuBarMiniEdit.setToolTipText("");
 		setJMenuBar(menuBarMiniEdit);
 		
