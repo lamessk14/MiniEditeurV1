@@ -21,8 +21,13 @@ import java.awt.event.ActionListener;
 import java.util.HashMap;
 import java.awt.event.ActionEvent;
 
+/**
+ * @author COULIBALY Fanta & Louise-Agnès MACKONGO 
+ */
 public class MyIHM extends JFrame {
-
+/**
+ * Déclaration des variables
+ */
 	private JFrame frame;
 	private JPanel contentPaneMiniEditeur;
 	protected TextArea zoneDeSaisie;
@@ -40,35 +45,14 @@ public class MyIHM extends JFrame {
 		JPanel contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		frame.setContentPane(contentPane);
-		
-		/*  JMenuBar menuBarMiniEdit = new JMenuBar();
-		menuBarMiniEdit.setToolTipText("");
-		setJMenuBar(menuBarMiniEdit);
-		
-		JButton btnCopier = new JButton("Copier");
-		menuBarMiniEdit.add(btnCopier);
-		
-		JButton btnColler = new JButton("Coller");
-		menuBarMiniEdit.add(btnColler);
-		
-		JButton btnCouper = new JButton("Couper");
-		btnCouper.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-			}
-		});
-		menuBarMiniEdit.add(btnCouper);
-		contentPaneMiniEditeur = new JPanel();
-		contentPaneMiniEditeur.setBorder(new EmptyBorder(5, 5, 5, 5));
-		contentPaneMiniEditeur.setLayout(new BorderLayout(0, 0));
-		setContentPane(contentPaneMiniEditeur);
-		
-		JTextArea textAreazoneDeSaisie = new JTextArea();
-		textAreazoneDeSaisie.setTabSize(5);
-		textAreazoneDeSaisie.setRows(5);
-		textAreazoneDeSaisie.setText("");
-		contentPaneMiniEditeur.add(textAreazoneDeSaisie, BorderLayout.CENTER);*/
 	}
 	
+	/**
+	 * Initialisation des différents boutons + création de l'interface graphique et les éléments
+	 * qui la compose
+	 * 
+	 * @param commandes
+	 */
 	public void initComposants(HashMap<String,Command> commandes){
 		zoneDeSaisie = new TextArea(commandes);
 		couper = Bouton("Couper", commandes.get("couper"));
@@ -102,13 +86,23 @@ public class MyIHM extends JFrame {
 		frame.getContentPane().setLayout(glContentPane);
 	}
 	
+	/**
+	 * Affichage de l'interface graphique de l'application qui contient les différents
+	 * éléments qui ont créés dans la fonction initComposants(HashMap<String,Command> commandes)
+	 */
 	public void afficher(){
 		frame.pack();
 		frame.setLocationRelativeTo(null);
 		zoneDeSaisie.requestFocusInWindow();
 		frame.setVisible(true);
 	}
-
+/**
+ * 
+ * @param nom
+ * @param commande
+ * @return une commande(couper, coller, copier) ainsi que le nom
+ * qui lui est assoicié
+ */
 	private BoutonsCommand Bouton(String nom, Command commande) {
 		BoutonsCommand boutonsCommand = new BoutonsCommand(nom, commande);
 		boutonsCommand.setMaximumSize(new Dimension(Short.MAX_VALUE, boutonsCommand.getPreferredSize().height));
@@ -123,6 +117,11 @@ public class MyIHM extends JFrame {
 		return boutonsCommand;
 	}
 	
+	/**
+	 * 
+	 * @param nom
+	 * @return la commande associée au nom de commande donné en paramètre
+	 */
 	public Command getCommand(String nom) {
 		if(nom == "couper"){
 			return couper.getCommand();
@@ -135,19 +134,34 @@ public class MyIHM extends JFrame {
 		}
 	}
 	
+	/**
+	 * 
+	 * @return la zone de saisie
+	 */
 	public TextArea getTextArea() {
 		return zoneDeSaisie;
 	}
 
-	
+	/**
+	 * 
+	 * @return le dernier caractère
+	 */
 	public char getDernierCharactere() {
 		return zoneDeSaisie.getDernierCharactere();
 	}
 
+	/**
+	 * 
+	 * @return la position du début de la sélection
+	 */
 	public int getDebutSelection() {
 		return zoneDeSaisie.getSelectionStart();
 	}
 	
+	/**
+	 * 
+	 * @return la position de la fin de la sélection
+	 */
 	public int getFinSelection(){
 		return zoneDeSaisie.getSelectionEnd();
 	}

@@ -1,3 +1,4 @@
+package client.test;
 import static org.junit.Assert.*;
 
 import java.util.HashMap;
@@ -12,6 +13,9 @@ import receiver.MoteurEditeurImplem;
 import command.Command;
 import client.MonAppli;
 
+/**
+ * @author COULIBALY Fanta & Louise-Agnès MACKONGO 
+ */
 public class ClientTest {
 	MonAppli client;
 	MoteurEditeurImplem moteur;
@@ -19,6 +23,10 @@ public class ClientTest {
 	HashMap<String,Command> commandes;
 
 	@Before
+	/**
+	 * Création des différents objets qui permettront d'effectuer les tests
+	 * @throws Exception
+	 */
 	public void setUp() throws Exception {
 		client = new MonAppli();
 		moteur = client.getMoteur();
@@ -28,6 +36,10 @@ public class ClientTest {
 		moteur.registerObserver(ihm);
 	}
 
+	/**
+	 * Libération des différents objets
+	 * @throws Exception
+	 */
 	@After
 	public void tearDown() throws Exception {
 		client = null;
@@ -35,22 +47,32 @@ public class ClientTest {
 		ihm = null;
 		commandes = null;
 	}
-
+/**
+ * 
+ */
 	@Test
 	public void testCommandes() {
 		 assertEquals(commandes.get("couper"), ihm.getCommand("couper") );
 		 assertEquals(commandes.get("copier"), ihm.getCommand("copier")); 
 		 assertEquals(commandes.get("coller"), ihm.getCommand("coller"));
 		 assertEquals(commandes.get("selectionner"), ihm.getTextArea().getCommand("selectionner")); 
-		 assertEquals(commandes.get("inserer"), ihm.getTextArea().getCommand("inserer")); 
-		 assertEquals(commandes.get("supprimer"), ihm.getTextArea().getCommand("supprimer")); 
+		 assertEquals(commandes.get("inserer"), ihm.getTextArea().getCommand("insererTxt")); 
+		 assertEquals(commandes.get("delete"), ihm.getTextArea().getCommand("supprimer")); 
 	}
 	
+	/**
+	 * 
+	 */
 	@Test
 	public void testObservers() {
 		 assertTrue(moteur.getObservers().contains(ihm)); 
 	}
 	
+	/**
+	 * Insertion d'une chaîne de caractères(papa), dernier caractère coupé puis collé
+	 * au même emplacement de départ
+	 * Sélection de la chaîne de caractère, copie puis coller
+	 */
 	@Test
 	public void testMoteur(){
 		moteur.insererTxt('p');

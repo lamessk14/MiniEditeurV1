@@ -1,14 +1,18 @@
 package receiver;
 
 import java.util.ArrayList;
+
 import observer.Observer;
 import observer.Subject;
 
 /**
- * 
+ * @author COULIBALY Fanta & Louise-Agnès MACKONGO 
  */
 public class MoteurEditeurImplem extends Subject implements MoteurEditeur {
 	
+	/*
+	 * Déclaration des variables
+	 */
 	private Buffer buffer;
 	private Selection sel;
 	private PressePapier pp;
@@ -22,30 +26,56 @@ public class MoteurEditeurImplem extends Subject implements MoteurEditeur {
 		pp = new PressePapier();
 		setObservers(new ArrayList<Observer>());
 	}
-	
+	/**
+	 * 
+	 * @return
+	 * la longueur de la chaine de caractère contenue dans le buffer
+	 */
 	public String getTexte(){
 		return buffer.getTexte(0, buffer.getLongueurTexte());
 	}
+	
+	/**
+	 * 
+	 * @return
+	 * le contenu du presse-papiers
+	 */
 	
 	public String getPressePapierTexte(){
 		return pp.getTexte();
 	}
 	
+	/**
+	 * 
+	 * @return
+	 * la position du début de la sélection
+	 */
 	public int getSelectionDebut(){
 		return sel.getDebutSelection();
 	}
 	
+	/**
+	 * 
+	 * @return
+	 * la position de la fin de la sélection
+	 */
 	public int getSelectionFin(){
 		return sel.getFinSelection();
 	}
 	
 	@Override
+	/**
+	 * Permet d'effectuer une sélection
+	 */
 	public void selectionner(int debutSelection, int finSelection) {
 		sel.setDebutSelection(debutSelection);
 		sel.setFinSelection(finSelection);
 	}
 
 	@Override
+	/**
+	 * Permet de faire la copie d'une sélection
+	 */
 	public void copier() {
 		if(sel.getLongueurSelection() > 0){
 			pp.setTexte(buffer.getTexte(sel.getDebutSelection(), sel.getFinSelection()));
@@ -53,8 +83,10 @@ public class MoteurEditeurImplem extends Subject implements MoteurEditeur {
 	}
 
 	@Override
+	/**
+	 * Permet de couper une sélection non vide. Le contenu du buffer est ainsi supprimé.
+	 */
 	public void couper() {
-		
 		if(sel.getLongueurSelection() > 0){
 			pp.setTexte(buffer.getTexte(sel.getDebutSelection(), sel.getFinSelection()));
 			buffer.delete(sel.getDebutSelection(), sel.getFinSelection());
@@ -65,6 +97,9 @@ public class MoteurEditeurImplem extends Subject implements MoteurEditeur {
 	}
 
 	@Override
+	/**
+	 * Permet de coller une sélection non vide. Le contenu du buffer est ainsi modifié.
+	 */
 	public void coller() {
 		if(sel.getLongueurSelection() > 0){
 			buffer.delete(sel.getDebutSelection(), sel.getFinSelection());
@@ -78,6 +113,10 @@ public class MoteurEditeurImplem extends Subject implements MoteurEditeur {
 	}
 
 	@Override
+	/**
+	 * @param : char t
+	 * permet d'insérer un texte dans l'éditeur caractère par caractère
+	 */
 	public void insererTxt(char t) {
 		if(sel.getLongueurSelection() > 0){
 			buffer.delete(sel.getDebutSelection(), sel.getFinSelection());
@@ -88,7 +127,9 @@ public class MoteurEditeurImplem extends Subject implements MoteurEditeur {
 
 		notifyObservers();
 	}
-	
+	/**
+	 * Permet de supprimer un chaine de caractères ou un caractère
+	 */
 	public void supprimer() {
 		if(sel.getLongueurSelection() > 0){
 			buffer.delete(sel.getDebutSelection(), sel.getFinSelection());
@@ -101,6 +142,9 @@ public class MoteurEditeurImplem extends Subject implements MoteurEditeur {
 	}
 	
 	@Override
+	/**
+	 * Notification des observers
+	 */
 	public void notifyObservers() {
 		for(Observer o : getObservers()){
 			o.notifyMe();
@@ -108,11 +152,17 @@ public class MoteurEditeurImplem extends Subject implements MoteurEditeur {
 	}
 
 	@Override
+	/**
+	 * Ajout d'un observer
+	 */
 	public void registerObserver(Observer o) {
 		getObservers().add(o);
 	}
 
 	@Override
+	/**
+	 * Suppression d'un observer
+	 */
 	public void removeObserver(Observer o) {
 		getObservers().remove(o);
 	}

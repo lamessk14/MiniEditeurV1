@@ -1,6 +1,10 @@
 package command;
 import java.util.*;
+
 import receiver.MoteurEditeurImplem;
+/**
+ * @author COULIBALY Fanta & Louise-Agnès MACKONGO 
+ */
 
 public class Copier implements Command {
 
@@ -15,7 +19,7 @@ public class Copier implements Command {
 	    }
 
 	    /**
-	     * 
+	     * exécution de la fonction copier dans l'objet moteur
 	     */
 	    @Override
 	    public void execute() {

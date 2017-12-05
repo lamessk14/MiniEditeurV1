@@ -3,12 +3,12 @@ package receiver;
 import java.util.*;
 
 /**
- * 
+ * @author COULIBALY Fanta & Louise-Agnès MACKONGO 
  */
+
 public class Buffer {
 
-	// Création d'une variable de type StringBuffer pour des questions de
-	// performance et de rapidité
+	// Création d'une variable de type StringBuffer pour des questions de performance et de rapidité
 	private StringBuffer buff;
 
 	/**

@@ -5,8 +5,9 @@ import invoker.MyIHM;
 import receiver.MoteurEditeurImplem;
 
 /**
- * 
+ * @author COULIBALY Fanta & Louise-Agnès MACKONGO 
  */
+
 public class Selectionner implements Command {
 
 	//Déclaration des variables

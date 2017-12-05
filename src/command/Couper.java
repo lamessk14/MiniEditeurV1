@@ -2,6 +2,10 @@ package command;
 import java.util.*;
 import receiver.MoteurEditeurImplem;
 
+/**
+ * @author COULIBALY Fanta & Louise-Agnès MACKONGO 
+ */
+
 public class Couper implements Command {
 
 	//Déclaration de variables
@@ -15,7 +19,7 @@ public class Couper implements Command {
 	    }
 
 	    /**
-	     * 
+	     * Exécution de la fonction couper dans l'objet moteur
 	     */
 	    @Override
 	    public void execute() {

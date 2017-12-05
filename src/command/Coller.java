@@ -2,6 +2,9 @@ package command;
 import java.util.*;
 import receiver.MoteurEditeurImplem;
 
+/**
+ * @author COULIBALY Fanta & Louise-Agnès MACKONGO 
+ */
 
 public class Coller implements Command {
 	

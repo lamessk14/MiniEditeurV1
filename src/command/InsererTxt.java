@@ -5,8 +5,9 @@ import invoker.MyIHM;
 import receiver.MoteurEditeurImplem;
 
 /**
- * 
+ * @author COULIBALY Fanta & Louise-Agnès MACKONGO 
  */
+
 public class InsererTxt implements Command {
 
 	//Déclaration des variables
