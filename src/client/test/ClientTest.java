@@ -24,6 +24,8 @@ public class ClientTest {
 
 	@Before
 	/**
+	 * Actions effectuées avant les tests
+	 * 
 	 * Création des différents objets qui permettront d'effectuer les tests
 	 * @throws Exception
 	 */
@@ -37,6 +39,8 @@ public class ClientTest {
 	}
 
 	/**
+	 * Actions réalisées après les tests
+	 * 
 	 * Libération des différents objets
 	 * @throws Exception
 	 */
@@ -48,7 +52,7 @@ public class ClientTest {
 		commandes = null;
 	}
 /**
- * 
+ * Vérification de la correspondance entre les commandes et les noms de commande
  */
 	@Test
 	public void testCommandes() {
@@ -61,7 +65,7 @@ public class ClientTest {
 	}
 	
 	/**
-	 * 
+	 * Vérification de l'existence d'observers
 	 */
 	@Test
 	public void testObservers() {

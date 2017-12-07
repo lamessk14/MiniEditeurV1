@@ -25,6 +25,7 @@ import java.awt.event.ActionEvent;
  * @author COULIBALY Fanta & Louise-Agnès MACKONGO 
  */
 public class MyIHM extends JFrame {
+	
 /**
  * Déclaration des variables
  */

@@ -7,6 +7,9 @@ import java.util.*;
 
 public interface Command {
 
+	/**
+	 * Permet d'exécuter toutes les commandes
+	 */
     public void execute();
 
 }

@@ -22,8 +22,7 @@ public abstract class Subject {
 	public abstract void notifyObservers();
 /**
  * 
- * @return
- * le contenu des observers
+ * @return la liste des observers
  */
 	public Collection<Observer> getObservers() {
 		return observers;

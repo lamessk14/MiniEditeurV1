@@ -19,7 +19,7 @@ public class Coller implements Command {
     }
 
     /**
-     * 
+     * Permet d'exécuter la commande coller
      */
     @Override
     public void execute() {

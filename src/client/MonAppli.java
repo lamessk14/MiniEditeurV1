@@ -19,7 +19,7 @@ public class MonAppli {
 	private HashMap<String,Command> commandes;
 
     /**
-     * Default constructor
+     * Création de tous les objets qui permettront le fonctionnement de l'application
      */
     public MonAppli() {
     	moteur = new MoteurEditeurImplem();
@@ -43,7 +43,8 @@ public class MonAppli {
 		ihm.afficher();
 	}
 /**
- * Lancement de l'application
+ * Exécution du main
+ * 
  * @param args
  */
 	public static void main(String args[]) {
@@ -52,7 +53,7 @@ public class MonAppli {
 	}
 /**
  * 
- * @return l'objet moteur
+ * @return l'objet moteur éditeur
  */
 	public MoteurEditeurImplem getMoteur(){
 		return moteur;

@@ -8,11 +8,13 @@ import receiver.MoteurEditeurImplem;
 
 public class Couper implements Command {
 
-	//Déclaration de variables
+	/**
+	 * Déclaration de variables
+	 */
 		private MoteurEditeurImplem moteur;
 
 	    /**
-	     * Constructeur
+	     * Création de la commande Couper
 	     */
 	    public Couper(MoteurEditeurImplem moteur1) {
 	    	moteur = moteur1;

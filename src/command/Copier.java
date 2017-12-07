@@ -12,7 +12,7 @@ public class Copier implements Command {
 		private MoteurEditeurImplem moteur;
 
 	    /**
-	     * Constructeur
+	     * Permet de créer la commande copier
 	     */
 	    public Copier(MoteurEditeurImplem moteur1) {
 	    	moteur = moteur1;
