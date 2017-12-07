@@ -56,7 +56,7 @@ public class ClientTest {
 		 assertEquals(commandes.get("copier"), ihm.getCommand("copier")); 
 		 assertEquals(commandes.get("coller"), ihm.getCommand("coller"));
 		 assertEquals(commandes.get("selectionner"), ihm.getTextArea().getCommand("selectionner")); 
-		 assertEquals(commandes.get("inserer"), ihm.getTextArea().getCommand("insererTxt")); 
+		 assertEquals(commandes.get("insererTxt"), ihm.getTextArea().getCommand("insererTxt")); 
 		 assertEquals(commandes.get("delete"), ihm.getTextArea().getCommand("supprimer")); 
 	}
 	
